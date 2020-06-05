@@ -1,0 +1,30 @@
+# Author: Nikhil .V. Pachkor
+#Linear Regression with Single Perceptron
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+x = list(range(0, 30, 1))
+y = list(2 * x[i] + 4 + random.randrange(1, 30) for i in range(len(x)))
+w=0
+b=0.5
+alpha=0.001
+t=[0]*len(x)
+for i in range(len(x)):
+    for j in range(100):
+        t[i]=w*x[i]+b
+        e=y[i]-t[i]
+        w=w+alpha*e*x[i]
+        b=b+alpha*e
+print('weight',w)
+print('Bias',b)
+q=str('Weight'+'='+str(w))
+t=str('Bias'+'='+str(b))
+plt.plot(x,y,'x')
+n = np.linspace(min(x),max(x),5)
+m = w*n+b
+plt.plot(n, m, 'r',label=[q,t])
+plt.title('Graph of Linear Regression using single Perceptron')
+plt.xlabel('x', color='#1C2833')
+plt.ylabel('y', color='#1C2833')
+plt.legend(loc='upper left')
+plt.show()

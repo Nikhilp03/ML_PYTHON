@@ -1,0 +1,39 @@
+# Author: Nikhil .V. Pachkor
+#Linear Regression Python Gradient Descent Algorithm
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+x = list(np.arange(0, 9.9, 0.1))
+y = list(3 * x[i] + 1 + random.randrange(1, 5) for i in range(len(x)))
+w0=0
+w1=0
+alpha=0.01
+e=[0]*1000
+for j in range(0,1000,1):
+    su=0
+    for i in range(1,99,1):
+        a= pow((w0 + w1*x[i] - y[i]),2)
+        su+=a
+    e[j]=su/(2*M)
+    su1=0
+    for i in range(1,99,1):
+        b= w0 +w1*x[i] - y[i]
+        su1+=b
+    dw0=su1/M
+    su2=0
+    for i in range(1,99,1):
+        c= (w0 + w1*x[i] - y[i])*x[i]
+        su2+=c
+    dw1=su2/M
+    w0=w0 - (alpha*dw0)
+    w1=w1 - (alpha*dw1)
+y1=np.add(np.multiply(np.array(w1),np.array(x)),w0)
+a=[i for i in range(0,1000,1)]
+plt.plot(x, y, '*', label='original')
+plt.plot(x, y1, 'r', label='predicted')
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.title('Linear regression')
+plt.legend()
+plt.show()
+
